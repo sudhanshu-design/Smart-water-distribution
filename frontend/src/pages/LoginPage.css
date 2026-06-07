@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 60px;
-  color: #ffffff;
+  color: #f3e8e8;
   position: relative;
   overflow: hidden;
 }
@@ -248,7 +248,7 @@
   box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
 }
 
-.login-input-field:focus + .login-input-icon {
+.login-input-field:focus+.login-input-icon {
   color: var(--primary);
 }
 
@@ -361,13 +361,25 @@
 
 /* Animations Keyframes */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 @keyframes fadeInLeft {
@@ -375,6 +387,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -386,6 +399,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -397,6 +411,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -404,22 +419,30 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
   .login-left-panel {
-    display: none; /* Hide brand panel on smaller tablets/mobile */
+    display: none;
+    /* Hide brand panel on smaller tablets/mobile */
   }
+
   .login-right-panel {
     padding: 40px 24px;
-    background-image: 
+    background-image:
       radial-gradient(at 0% 0%, rgba(244, 239, 230, 0.8) 0px, transparent 50%),
       radial-gradient(at 100% 0%, rgba(240, 230, 215, 0.5) 0px, transparent 50%),
       radial-gradient(at 50% 100%, rgba(220, 210, 190, 0.3) 0px, transparent 50%);
   }
+
   .login-page-container {
     justify-content: center;
     align-items: center;
