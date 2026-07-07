@@ -45,6 +45,7 @@ function ProfileModal({ user, onClose, onUpdateUser }) {
     return () => {
       if (interval) clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, user]);
 
   const fetchUserOrders = async () => {
