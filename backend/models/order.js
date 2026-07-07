@@ -124,7 +124,7 @@ module.exports=
 
 mongoose.model(
 
-"Order",
+"order",
 
 OrderSchema
 
