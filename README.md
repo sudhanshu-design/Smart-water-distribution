@@ -88,7 +88,7 @@ Ensure you have [Node.js](https://nodejs.org/) (v16+) and [MongoDB](https://www.
    MONGO_URI=mongodb://localhost:27017/aquaflow
    JWT_SECRET=aquaflow_secret_key_123
    ```
-4. Start the server (runs on `http://localhost:5000` with nodemon auto-restart enabled):
+4. Start the server (runs on `https://smart-water-distribution-5.onrender.com` with nodemon auto-restart enabled):
    ```bash
    npm start
    ```
