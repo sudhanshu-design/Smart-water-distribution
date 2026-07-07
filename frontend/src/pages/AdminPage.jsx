@@ -75,7 +75,7 @@ function AdminPage({ setRole, user }) {
 
   const fetchActiveDrivers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/auth/drivers/active");
+      const response = await axios.get("https://smart-water-distribution-5.onrender.com/auth/drivers/active");
       setActiveDrivers(response.data);
     } catch (err) {
       console.error("Error fetching active drivers:", err);
@@ -86,7 +86,7 @@ function AdminPage({ setRole, user }) {
     setLoadingDrivers(true);
     setDriversError("");
     try {
-      const response = await axios.get("http://localhost:5000/auth/drivers");
+      const response = await axios.get("https://smart-water-distribution-5.onrender.com/auth/drivers");
       setDrivers(response.data);
     } catch (err) {
       console.error("Error fetching drivers:", err);
@@ -98,7 +98,7 @@ function AdminPage({ setRole, user }) {
 
   const handleApproveDriver = async (driverId) => {
     try {
-      await axios.put(`http://localhost:5000/auth/drivers/approve/${driverId}`);
+      await axios.put(`https://smart-water-distribution-5.onrender.com/auth/drivers/approve/${driverId}`);
       fetchDrivers();
       fetchActiveDrivers();
     } catch (err) {
@@ -111,7 +111,7 @@ function AdminPage({ setRole, user }) {
     setLoadingAnalytics(true);
     setAnalyticsError("");
     try {
-      const response = await axios.get("http://localhost:5000/orders/analytics");
+      const response = await axios.get("https://smart-water-distribution-5.onrender.com/orders/analytics");
       setAnalyticsData(response.data);
     } catch (err) {
       console.error("Error fetching analytics:", err);
@@ -133,7 +133,7 @@ function AdminPage({ setRole, user }) {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/orders/fifo");
+      const response = await axios.get("https://smart-water-distribution-5.onrender.com/orders/fifo");
       setOrders(response.data);
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -142,7 +142,7 @@ function AdminPage({ setRole, user }) {
 
   const fetchPrices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/orders/prices");
+      const response = await axios.get("https://smart-water-distribution-5.onrender.com/orders/prices");
       if (response.data) {
         setPrices(prev => ({
           ...prev,
@@ -181,7 +181,7 @@ function AdminPage({ setRole, user }) {
     let intervalId = null;
     const fetchDriverStatus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/orders/driver/status");
+        const response = await axios.get("https://smart-water-distribution-5.onrender.com/orders/driver/status");
         setDriverStatus(response.data);
       } catch (err) {
         console.error("Error fetching driver status:", err);
@@ -289,7 +289,7 @@ function AdminPage({ setRole, user }) {
       setPriceSuccess("");
       setPriceError("");
       try {
-        const response = await axios.put("http://localhost:5000/orders/prices", {
+        const response = await axios.put("https://smart-water-distribution-5.onrender.com/orders/prices", {
           [field]: base64String
         });
         setPrices(prev => ({
@@ -313,7 +313,7 @@ function AdminPage({ setRole, user }) {
     setPriceSuccess("");
     setPriceError("");
     try {
-      const response = await axios.put("http://localhost:5000/orders/prices", {
+      const response = await axios.put("https://smart-water-distribution-5.onrender.com/orders/prices", {
         [field]: ""
       });
       setPrices(prev => ({
@@ -373,7 +373,7 @@ function AdminPage({ setRole, user }) {
 
   const handleStartSimulation = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/orders/driver/start");
+      const response = await axios.post("https://smart-water-distribution-5.onrender.com/orders/driver/start");
       alert(response.data.message || "Simulation started.");
       setShowOptimizedRoute(false);
     } catch (err) {
@@ -384,7 +384,7 @@ function AdminPage({ setRole, user }) {
 
   const handleStopSimulation = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/orders/driver/stop");
+      const response = await axios.post("https://smart-water-distribution-5.onrender.com/orders/driver/stop");
       alert(response.data.message || "Simulation stopped.");
       setOptimizedStops([]);
       setShowOptimizedRoute(false);
@@ -407,7 +407,7 @@ function AdminPage({ setRole, user }) {
 
   const deliverOrder = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/orders/process/${id}`);
+      await axios.put(`https://smart-water-distribution-5.onrender.com/orders/process/${id}`);
       fetchOrders();
     } catch (error) {
       console.error("Error processing delivery:", error);
@@ -420,7 +420,7 @@ function AdminPage({ setRole, user }) {
     setPriceSuccess("");
     setPriceError("");
     try {
-      const response = await axios.put("http://localhost:5000/orders/prices", {
+      const response = await axios.put("https://smart-water-distribution-5.onrender.com/orders/prices", {
         distributorOneLPrice: Number(editDistOneL),
         distributorFiveHundredMLPrice: Number(editDistFiveHundredML),
         distributorTwoHundredMLPrice: Number(editDistTwoHundredML)
@@ -452,7 +452,7 @@ function AdminPage({ setRole, user }) {
     setPriceSuccess("");
     setPriceError("");
     try {
-      const response = await axios.put("http://localhost:5000/orders/prices", {
+      const response = await axios.put("https://smart-water-distribution-5.onrender.com/orders/prices", {
         retailerOneLPrice: Number(editRetOneL),
         retailerFiveHundredMLPrice: Number(editRetFiveHundredML),
         retailerTwoHundredMLPrice: Number(editRetTwoHundredML)
@@ -1588,7 +1588,7 @@ function AdminPage({ setRole, user }) {
                     onChange={async (e) => {
                       const selectedDriverId = e.target.value;
                       try {
-                        await axios.put("http://localhost:5000/orders/assign", {
+                        await axios.put("https://smart-water-distribution-5.onrender.com/orders/assign", {
                           orderIds: [detailedOrder._id],
                           driverId: selectedDriverId || null
                         });

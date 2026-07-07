@@ -47,7 +47,7 @@ function DriverPage({ setRole, user }) {
     const fetchData = async () => {
       try {
         // Fetch all orders
-        const ordersRes = await axios.get("http://localhost:5000/orders/fifo");
+        const ordersRes = await axios.get("https://smart-water-distribution-5.onrender.com/orders/fifo");
         // Filter by assigned driver
         const assigned = ordersRes.data.filter(
           o => o.assignedDriverId === driverId
@@ -55,7 +55,7 @@ function DriverPage({ setRole, user }) {
         setOrders(assigned);
 
         // Fetch driver simulation status
-        const statusRes = await axios.get(`http://localhost:5000/orders/driver/status/${driverId}`);
+        const statusRes = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/driver/status/${driverId}`);
         setDriverStatus(statusRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -179,17 +179,17 @@ function DriverPage({ setRole, user }) {
       // First, set all assigned orders to "Out for Delivery" status so customer sees progress
       const pendingOrders = orders.filter(o => o.status === "Pending" || o.status === "Driver Assigned");
       for (const order of pendingOrders) {
-        await axios.put(`http://localhost:5000/orders/status/${order._id}`, { status: "Out for Delivery" });
+        await axios.put(`https://smart-water-distribution-5.onrender.com/orders/status/${order._id}`, { status: "Out for Delivery" });
       }
 
       // Start simulation
-      await axios.post("http://localhost:5000/orders/driver/start", { driverId });
+      await axios.post("https://smart-water-distribution-5.onrender.com/orders/driver/start", { driverId });
       
       // Refresh status
-      const statusRes = await axios.get(`http://localhost:5000/orders/driver/status/${driverId}`);
+      const statusRes = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/driver/status/${driverId}`);
       setDriverStatus(statusRes.data);
 
-      const ordersRes = await axios.get("http://localhost:5000/orders/fifo");
+      const ordersRes = await axios.get("https://smart-water-distribution-5.onrender.com/orders/fifo");
       setOrders(ordersRes.data.filter(o => o.assignedDriverId === driverId));
     } catch (err) {
       console.error(err);
@@ -203,9 +203,9 @@ function DriverPage({ setRole, user }) {
     setIsUpdating(true);
     setError("");
     try {
-      await axios.post("http://localhost:5000/orders/driver/stop", { driverId });
+      await axios.post("https://smart-water-distribution-5.onrender.com/orders/driver/stop", { driverId });
       
-      const statusRes = await axios.get(`http://localhost:5000/orders/driver/status/${driverId}`);
+      const statusRes = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/driver/status/${driverId}`);
       setDriverStatus(statusRes.data);
     } catch (err) {
       console.error(err);
@@ -219,10 +219,10 @@ function DriverPage({ setRole, user }) {
     setIsUpdating(true);
     setError("");
     try {
-      await axios.put(`http://localhost:5000/orders/status/${orderId}`, { status: newStatus });
+      await axios.put(`https://smart-water-distribution-5.onrender.com/orders/status/${orderId}`, { status: newStatus });
       
       // Refresh orders
-      const ordersRes = await axios.get("http://localhost:5000/orders/fifo");
+      const ordersRes = await axios.get("https://smart-water-distribution-5.onrender.com/orders/fifo");
       setOrders(ordersRes.data.filter(o => o.assignedDriverId === driverId));
     } catch (err) {
       console.error(err);

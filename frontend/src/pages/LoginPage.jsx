@@ -22,7 +22,7 @@ function LoginPage({ setRole, setUser, setView }) {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
+      const response = await axios.post("https://smart-water-distribution-5.onrender.com/auth/login", {
         username: userVal,
         password: passVal,
         role

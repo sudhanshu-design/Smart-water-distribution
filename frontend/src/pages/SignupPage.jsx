@@ -36,7 +36,7 @@ function SignupPage({ setRole, setUser, setView }) {
     setSuccess("");
 
     try {
-      await axios.post("http://localhost:5000/auth/register", {
+      await axios.post("https://smart-water-distribution-5.onrender.com/auth/register", {
         username: userStr,
         password: passStr,
         role,

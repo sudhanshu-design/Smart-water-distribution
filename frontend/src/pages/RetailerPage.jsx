@@ -63,7 +63,7 @@ function RetailerPage({ setRole, user, onUpdateUser }) {
   useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/orders/prices");
+        const response = await axios.get("https://smart-water-distribution-5.onrender.com/orders/prices");
         if (response.data) {
           setPrices(prev => ({
             ...prev,
@@ -87,7 +87,7 @@ function RetailerPage({ setRole, user, onUpdateUser }) {
 
     const fetchUserOrders = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/orders/user/${user.username}`);
+        const response = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/user/${user.username}`);
         setUserOrders(response.data);
       } catch (err) {
         console.error("Error fetching user orders:", err);
@@ -113,7 +113,7 @@ function RetailerPage({ setRole, user, onUpdateUser }) {
 
     const fetchDriverStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/orders/driver/status?driverId=${activeOrder.assignedDriverId}`);
+        const response = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/driver/status?driverId=${activeOrder.assignedDriverId}`);
         setDriverStatus(response.data);
       } catch (err) {
         console.error("Error fetching driver status:", err);
@@ -330,7 +330,7 @@ function RetailerPage({ setRole, user, onUpdateUser }) {
 
     setIsSubmitting(true);
     try {
-      await axios.post("http://localhost:5000/orders/create", {
+      await axios.post("https://smart-water-distribution-5.onrender.com/orders/create", {
         clientType: "Retailer",
         username: user.username,
         retailerName: user.name,

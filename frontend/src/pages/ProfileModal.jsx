@@ -33,7 +33,7 @@ function ProfileModal({ user, onClose, onUpdateUser }) {
       interval = setInterval(() => {
         const pollUserOrders = async () => {
           try {
-            const response = await axios.get(`http://localhost:5000/orders/user/${user.username}`);
+            const response = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/user/${user.username}`);
             setOrders(response.data);
           } catch (err) {
             console.error("Error polling orders:", err);
@@ -50,7 +50,7 @@ function ProfileModal({ user, onClose, onUpdateUser }) {
   const fetchUserOrders = async () => {
     setIsLoadingOrders(true);
     try {
-      const response = await axios.get(`http://localhost:5000/orders/user/${user.username}`);
+      const response = await axios.get(`https://smart-water-distribution-5.onrender.com/orders/user/${user.username}`);
       setOrders(response.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
@@ -74,7 +74,7 @@ function ProfileModal({ user, onClose, onUpdateUser }) {
     setSuccess("");
 
     try {
-      const response = await axios.put(`http://localhost:5000/auth/update-profile/${user.id}`, {
+      const response = await axios.put(`https://smart-water-distribution-5.onrender.com/auth/update-profile/${user.id}`, {
         name: nameVal,
         contact: contactVal,
         address: addressVal
